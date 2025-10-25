@@ -78,11 +78,11 @@ else
     // -----------------------------------------------------------
     // Ciclo de vida: carregar dados e só então montar estatísticas
     // -----------------------------------------------------------
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
         // 1) Carregar as tarefas de uma fonte (mock/dados locais/serviço)
         //    - Usa operador de coalescência para garantir lista não nula
-        tarefas = TarefaDados.ObterTarefas();
+        tarefas = await TarefaDados.ObterTarefasAssinc();
 
         // 2) Montar as estatísticas com base nas tarefas carregadas
         MontarEstatisticas();

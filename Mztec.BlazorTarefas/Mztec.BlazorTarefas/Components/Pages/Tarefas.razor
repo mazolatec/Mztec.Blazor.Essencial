@@ -1,0 +1,96 @@
+﻿@page "/tarefas"
+@rendermode InteractiveServer
+
+<h3>Lista de Tarefas</h3>
+<h5>
+    Usando <b>rendermode InteractiveServer</b>
+</h5>
+<br/>
+
+@if(tarefas == null)
+{
+    <img src="https://media.giphy.com/media/qHOf8vC1ppFQs/giphy.gif" width="100" class="icone-carregando" />
+    <p>Carregando tarefas...</p>
+}
+else if(!tarefas.Any())
+{
+    <img src="icons/erro-404.png" class="icone-carregando" />
+    <p>Ainda não existem tarefas...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Data de Criação</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var tarefa in tarefas)
+            {
+                <tr>
+                    <td>@tarefa.Descricao</td>
+                    <td>@tarefa.DataCriacao.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @if(tarefa.Concluida)
+                        {
+                            <span class="badge bg-success">Concluída</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">Pendente</span>
+                        }
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-primary me-2" @onclick="() => AltenarConclusao(tarefa.ID)">
+                            @if(tarefa.Concluida)
+                            {
+                                <span>Marcar como Pendente</span>
+                            }
+                            else
+                            {
+                                <span>Marcar como Concluída</span>
+                            }
+                        </button>
+                        <button class="btn btn-sm btn-danger" @onclick="() => RemoverTarefa(tarefa.ID)">Remover</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+
+
+@code {
+    private List<Tarefa>? tarefas;
+
+    protected override async void OnInitialized()
+    {
+
+        tarefas = await TarefaDados.ObterTarefasAssinc();
+    }
+
+    private void RemoverTarefa(Guid id)
+    {
+        // if (tarefas is not null)
+        // {
+        //     tarefas.Remove(tarefa);
+        // }
+        //Usando RemoveAll com expressão lambda onde busca id igual ao id passado se não encontrar devolve null
+        tarefas?.RemoveAll(t => t.ID == id);
+    }
+
+    private void AltenarConclusao(Guid guid)
+    {   //Usando FirstOrDefault para buscar a primeira tarefa que tenha o id igual ao id passado
+        var tarefa = tarefas?.FirstOrDefault(t => t.ID == guid);
+        if (tarefa is not null)
+        {
+            tarefa.Concluida = !tarefa.Concluida;
+        }
+    }
+}
