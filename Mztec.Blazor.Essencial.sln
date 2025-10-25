@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mztec.BlazorTarefas", "Mzte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mztec.BlazorTarefas.Client", "Mztec.BlazorTarefas\Mztec.BlazorTarefas.Client\Mztec.BlazorTarefas.Client.csproj", "{DB20825D-2438-48CB-9BB2-27E78756A2AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mztec.BlazorTarefas.Shared", "Mztec.BlazorTarefas.Shared\Mztec.BlazorTarefas.Shared.csproj", "{AE0CFC94-2FB8-4D2A-8F3A-AEBE6B5F24E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DB20825D-2438-48CB-9BB2-27E78756A2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB20825D-2438-48CB-9BB2-27E78756A2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB20825D-2438-48CB-9BB2-27E78756A2AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0CFC94-2FB8-4D2A-8F3A-AEBE6B5F24E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0CFC94-2FB8-4D2A-8F3A-AEBE6B5F24E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0CFC94-2FB8-4D2A-8F3A-AEBE6B5F24E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0CFC94-2FB8-4D2A-8F3A-AEBE6B5F24E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
