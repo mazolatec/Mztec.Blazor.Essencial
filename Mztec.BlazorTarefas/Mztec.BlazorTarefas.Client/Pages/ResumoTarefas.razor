@@ -1,5 +1,16 @@
 ﻿@page "/tarefas-resumo"
+@layout LayoutSimples
 @rendermode InteractiveWebAssembly
+
+<!-- INÍCIO DO NOVO LINK DE NAVEGAÇÃO -->
+
+<div class="mb-4">
+    <NavLink href="/" class="btn btn-secondary">
+        <i class="bi bi-arrow-left-circle" /> Voltar para Home
+    </NavLink>
+</div>
+
+<!-- FIM DO NOVO LINK DE NAVEGAÇÃO -->
 
 <h4>Resumo de Tarefas</h4>
 <h5>Usando <b>rendermode InteractiveWebAssembly</b></h5>
@@ -57,8 +68,8 @@ else
             <li class="list-group-item d-flex align-items-center">
                 <i class="bi @item.Icone fs-4 me-3 @item.Cor"></i>
                 <div>
-                    <div class="fw-semibold">@item.Label</div>
-                    <div class="text-muted small">@item.Valor</div>
+                    <div class="fw-semibold">@item.Label = @item.Valor</div>
+                    
                 </div>
             </li>
         }
@@ -102,22 +113,30 @@ else
         int pendentes = total - concluidas;
 
         // 📅 Datas seguras (lista vazia → “—”)
-        string primeira = tarefas.Any()
-            ? tarefas.Min(t => t.DataCriacao).ToString("dd/MM/yyyy")
-            : "—";
+        string primeira = tarefas.Any()? 
+        tarefas.Min(t => t.DataCriacao).ToString("dd/MM/yyyy"): "—";
 
-        string ultima = tarefas.Any()
-            ? tarefas.Max(t => t.DataCriacao).ToString("dd/MM/yyyy")
-            : "—";
+        string ultima = tarefas.Any()? 
+        tarefas.Max(t => t.DataCriacao).ToString("dd/MM/yyyy"): "—";
 
         // 🧮 Popular a coleção que será renderizada na seção “Estatísticas com Ícones”
         estatisticas = new()
         {
-            new("bi-list-check",        "text-primary", "Total de Tarefas", total.ToString()),
-            new("bi-check-circle-fill", "text-success", "Concluídas",       concluidas.ToString()),
-            new("bi-hourglass-split",   "text-warning", "Pendentes",        pendentes.ToString()),
-            new("bi-calendar-check",    "text-info",    "Primeira Tarefa",  primeira),
-            new("bi-calendar-event",    "text-danger",  "Última Tarefa",    ultima)
+            new("bi-list-check",        
+                "text-primary", 
+                "Total de Tarefas", total.ToString()),
+
+            new("bi-check-circle-fill", 
+                "text-success", "Concluídas", concluidas.ToString()),
+
+            new("bi-hourglass-split",   
+                "text-warning", "Pendentes", pendentes.ToString()),
+
+            new("bi-calendar-check",    
+                "text-info","Primeira Tarefa",primeira),
+
+            new("bi-calendar-event","text-danger",
+                "Última Tarefa",    ultima)
         };
     }
 
