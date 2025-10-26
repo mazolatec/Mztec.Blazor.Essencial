@@ -3,4 +3,11 @@
         <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
         <FocusOnNavigate RouteData="routeData" Selector="h1" />
     </Found>
+    <NotFound>
+        <LayoutView Layout="typeof(Layout.MainLayout)">
+            <h1 class="text-bg-danger"> Página não encontrada</h1>
+            <p >URL não coresponde a nenhuma rota válida</p>
+            <p><a class="btn btn-primary" href="/"> Home </a></p>
+        </LayoutView>
+    </NotFound>
 </Router>

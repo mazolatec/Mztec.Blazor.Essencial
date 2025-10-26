@@ -3,10 +3,10 @@
 @page "/list"
 @rendermode InteractiveServer
 
-@* <button class="btn btn-link mb-3" @onclick="IrParaResumo">
+ <button class="btn btn-link mb-3" @onclick="IrParaResumo">
 <i class="bi bi-bar-chart-line"></i>
     Ir para Resumo
-</button> *@
+</button> 
 
 <h3>Lista de Tarefas</h3>
 <h5>
@@ -76,7 +76,8 @@ else
 @code {
     [Parameter]
     public string ? Status { get; set; }
-
+    [Inject]
+    private NavigationManager Nav { get; set; } = default!;
     private List<Tarefa>? tarefas;
 
     protected override async void OnInitialized()
@@ -108,5 +109,9 @@ else
         {
             tarefa.Concluida = !tarefa.Concluida;
         }
+    }
+    private void IrParaResumo()
+    {
+        Nav.NavigateTo("/tarefas-resumo");
     }
 }
