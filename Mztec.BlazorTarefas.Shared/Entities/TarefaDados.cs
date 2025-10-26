@@ -28,7 +28,7 @@ namespace Mztec.BlazorTarefas.Shared.Entities
                 new Tarefa
                 {
                     Descricao = "Ler documentação Blazor",
-                    Concluida = false,
+                    Concluida = true,
                     DataCriacao = DateTime.Parse("2025-03-04")
                 },
                 new Tarefa
@@ -40,13 +40,13 @@ namespace Mztec.BlazorTarefas.Shared.Entities
                 new Tarefa
                 {
                     Descricao = "Criar API com EF Core",
-                    Concluida = false,
+                    Concluida = true,
                     DataCriacao = DateTime.Parse("2025-05-12")
                 },
                 new Tarefa
                 {
                     Descricao = "Fazer testes unitários",
-                    Concluida = false,
+                    Concluida = true,
                     DataCriacao = DateTime.Parse("2025-06-01")
                 },
                 new Tarefa

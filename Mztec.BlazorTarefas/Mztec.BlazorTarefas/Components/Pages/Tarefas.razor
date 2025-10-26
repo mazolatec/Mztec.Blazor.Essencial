@@ -1,5 +1,12 @@
 ﻿@page "/tarefas"
+@page "/tarefas/{status}"
+@page "/list"
 @rendermode InteractiveServer
+
+@* <button class="btn btn-link mb-3" @onclick="IrParaResumo">
+<i class="bi bi-bar-chart-line"></i>
+    Ir para Resumo
+</button> *@
 
 <h3>Lista de Tarefas</h3>
 <h5>
@@ -67,12 +74,21 @@ else
 
 
 @code {
+    [Parameter]
+    public string ? Status { get; set; }
+
     private List<Tarefa>? tarefas;
 
     protected override async void OnInitialized()
     {
-
-        tarefas = await TarefaDados.ObterTarefasAssinc();
+        //await Task.Delay(100);
+        var todas = await TarefaDados.ObterTarefasAssinc();
+        tarefas = Status?.ToLower() switch
+        {
+            "concluidas" => todas.Where(t => t.Concluida).ToList(),
+            "pendentes" => todas.Where(t => !t.Concluida).ToList(),
+             _ => todas
+        };
     }
 
     private void RemoverTarefa(Guid id)
