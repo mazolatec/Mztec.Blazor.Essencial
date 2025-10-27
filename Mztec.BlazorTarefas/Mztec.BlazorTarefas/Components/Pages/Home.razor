@@ -1,5 +1,23 @@
 ﻿@page "/"
 
+
+<!-- INÍCIO DA SEÇÃO DE DIAGNÓSTICO -->
+<div class="alert alert-info mt-4 p-3" style="border-left: 5px solid #0dcaf0;">
+    <h5 class="alert-heading fw-bold">Diagnóstico de Renderização</h5>
+    <hr>
+    <dl class="row">
+        <dt class="col-sm-4">Local de Execução:</dt>
+        <dd class="col-sm-8"><code>@RendererInfo.Name</code></dd>
+
+        <dt class="col-sm-4">É Interativo (agora):</dt>
+        <dd class="col-sm-8"><code>@RendererInfo.IsInteractive</code></dd>
+
+        <dt class="col-sm-4">Modo Atribuído:</dt>
+        <dd class="col-sm-8"><code>@(AssignedRenderMode?.ToString() ?? "Nenhum (Estático/SSR)")</code></dd>
+    </dl>
+</div>
+<!-- FIM DA SEÇÃO CORRIGIDA -->
+
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
